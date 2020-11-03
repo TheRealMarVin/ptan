@@ -4,6 +4,7 @@ from unittest import TestCase
 import gym
 from ptan import experience, agent
 
+from nose.tools import assert_equals, assert_almost_equal
 
 class DummyAgent(agent.BaseAgent):
     def __call__(self, states, agent_states):
@@ -162,5 +163,5 @@ class TestExperienceSourceFirstLast(TestCase):
             if idx > 5:
                 break
         # NB: there is no last state(4), as we don't record it
-        self.assertEquals(states, [0, 1, 2, 3, 0, 1, 2])
+        self.assertEqual(states, [0, 1, 2, 3, 0, 1, 2])
 
