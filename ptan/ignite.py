@@ -2,15 +2,16 @@ import ptan
 import enum
 import time
 from typing import Optional
-from ignite.engine import Engine, State
+from ignite.engine import Engine, State, EventEnum
 from ignite.engine import Events
 from ignite.handlers.timing import Timer
 
 
-class EpisodeEvents(enum.Enum):
+class EpisodeEvents(EventEnum):
     EPISODE_COMPLETED = "episode_completed"
     BOUND_REWARD_REACHED = "bound_reward_reached"
     BEST_REWARD_REACHED = "best_reward_reached"
+
 
 
 class EndOfEpisodeHandler:
@@ -103,7 +104,7 @@ class EpisodeFPSHandler:
         self._timer.reset()
 
 
-class PeriodEvents(enum.Enum):
+class PeriodEvents(EventEnum):
     ITERS_10_COMPLETED = "iterations_10_completed"
     ITERS_100_COMPLETED = "iterations_100_completed"
     ITERS_1000_COMPLETED = "iterations_1000_completed"
